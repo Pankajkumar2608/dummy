@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wallet Connected</title>
+</head>
+<body>
+  <h1>Wallet Connection Status</h1>
+  <div id="wallet-status">Loading wallet connection...</div>
+
+  <script>
+    // Handle the wallet connection status
+    function handleWalletConnection() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const publicKey = urlParams.get('public_key');
+
+      if (publicKey) {
+        document.getElementById('wallet-status').innerText = `Connected Wallet: ${publicKey}`;
+      } else {
+        document.getElementById('wallet-status').innerText = `Failed to connect wallet`;
+      }
+    }
+
+    // Call the function when the page loads
+    window.onload = handleWalletConnection;
+  </script>
+</body>
+</html>
